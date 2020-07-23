@@ -17,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('createRepublic', 'RepublicController@createRepublic');
+Route::get('findRepublic/{id}', 'RepublicController@findRepublic');
+Route::get('listRepublic', 'RepublicController@listRepublic');
+Route::put('updateRepublic', 'RepublicController@updateRepublic');
+Route::delete('deleteRepublic', 'RepublicController@deleteRepublic');
+
+Route::post('createUser', 'UserController@createUser');
