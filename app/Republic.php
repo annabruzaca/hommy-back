@@ -3,12 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\User;
+use App\Lessor;
 
 class Republic extends Model
 {
     //
-    public function user(){
-        return $this->belongsTo('App\User');
+    public function lessor(){
+        return $this->belongsTo('App\Lessor');
     }
 }

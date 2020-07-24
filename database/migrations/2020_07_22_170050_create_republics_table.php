@@ -15,21 +15,19 @@ class CreateRepublicsTable extends Migration
     {
         Schema::create('republics', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('lessor_id')->nullable();
             $table->string('name');
             $table->string('CEP');
-            $table->integer('bedrooms');
-            $table->integer('bathrooms');
+            $table->integer('how_many_bedrooms');
+            $table->integer('how_many_bathrooms');
             $table->boolean('kitchen');
             $table->boolean('living_room');
             $table->boolean('laundry');
-            $table->boolean('furniture');
-            $table->boolean('bedrooms_with_the_same_size');
             $table->longText('description')->nullable();
             $table->timestamps();
         });
         Schema::table('republics', function (Blueprint $table) {
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('lessor_id')->references('id')->on('lessors')->onDelete('cascade');
         });
     }
 

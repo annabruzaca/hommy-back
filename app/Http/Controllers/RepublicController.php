@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Republic;
-use App\User;
+use App\lessor;
 
 class RepublicController extends Controller
 {
@@ -13,13 +13,11 @@ class RepublicController extends Controller
         $republic = new Republic;
         $republic->name = $request->name;
         $republic->CEP = $request->CEP;
-        $republic->bedrooms = $request->bedrooms;
-        $republic->bathrooms = $request->bathrooms;
+        $republic->how_many_bedrooms = $request->how_many_bedrooms;
+        $republic->how_many_bathrooms = $request->how_many_bathrooms;
         $republic->kitchen = $request->kitchen;
         $republic->living_room = $request->living_room;
         $republic->laundry = $request->laundry;
-        $republic->furniture = $request->furniture;
-        $republic->bedrooms_with_the_same_size = $request->bedrooms_with_the_same_size;
         $republic->description = $request->description;
         $republic->save();
         return response()->json($republic);
@@ -40,14 +38,11 @@ class RepublicController extends Controller
         if($request->CEP){
             $this->CEP = $request->CEP;
         }
-        if($request->bedrooms){
-            $this->bedrooms = $request->bedrooms;
+        if($request->how_many_bedrooms){
+            $this->how_many_bedrooms = $request->how_many_bedrooms;
         }
-        if($request->bathrooms){
-            $this->bathrooms = $request->bathrooms;
-        }
-        if($request->kitchen){
-            $this->kitchen = $request->kitchen;
+        if($request->how_many_bathrooms){
+            $this->how_many_bathrooms = $request->how_many_bathrooms;
         }
         if($request->kitchen){
             $this->kitchen = $request->kitchen;
@@ -57,12 +52,6 @@ class RepublicController extends Controller
         }
         if($request->laundry){
             $this->laundry = $request->laundry;
-        }
-        if($request->furniture){
-            $this->furniture = $request->furniture;
-        }
-        if($request->bedrooms_with_the_same_size){
-            $this->bedrooms_with_the_same_size = $bedrooms_with_the_same_size;
         }
         if($request->description){
             $this->description = $request->description;
@@ -74,17 +63,17 @@ class RepublicController extends Controller
         Republic::destroy($id);
         return response()->json(['Produto deletado']);
     }
-    public function addUser($id, $republic_id){
-        $user = User::findOrFail($id);
+    public function addLessor($id, $republic_id){
+        $lessor = Lessor::findOrFail($id);
         $republic = Republic::findOrFail($republic_id);
-        $republic_id->user = $id;
+        $republic_id->lessor = $id;
         $republic_id->save();
         return response()->json($republic_id);
     }
-    public function removeUser($id, $republic_id){
-        $user = User::findOrFail($id);
+    public function removeLessor($id, $republic_id){
+        $lessor = lessor::findOrFail($id);
         $republic = Republic::findOrFail($republic_id);
-        $republic_id->user = NULL;
+        $republic_id->lessor = NULL;
         $republic_id->save();
         return response()->json($republic_id);
     }

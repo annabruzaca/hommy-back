@@ -14,14 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:api')->get('/lessor', function (Request $request) {
+    return $request->lessor();
 });
 
 Route::post('createRepublic', 'RepublicController@createRepublic');
 Route::get('findRepublic/{id}', 'RepublicController@findRepublic');
 Route::get('listRepublic', 'RepublicController@listRepublic');
 Route::put('updateRepublic', 'RepublicController@updateRepublic');
+Route::put('updateRepublic/{how_many_bedrooms}', 'RepublicController@updateRepublic');
 Route::delete('deleteRepublic', 'RepublicController@deleteRepublic');
 
-Route::post('createUser', 'UserController@createUser');
+Route::post('createLessor', 'LessorController@createLessor');
+Route::get('findLessor/{id}', 'LessorController@findLessor');
+Route::put('updateLessor', 'LessorController@updateLessor');
+Route::delete('deleteLessor', 'LessorController@deleteLessor');
