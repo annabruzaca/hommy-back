@@ -21,7 +21,6 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('confirm_password');
-            $table->unsignedBigInteger('republic_id')->nullable();
             $table->timestamps();
         });
     }
